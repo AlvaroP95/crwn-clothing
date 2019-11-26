@@ -3,5 +3,8 @@
         "activityBar.background": "#006ca1",
         "titleBar.activeBackground": "#025077",
         "titleBar.activeForeground": "#EFFEEC"
-    }
+    },
+    "cSpell.words": [
+        "persistor"
+    ]
 }
