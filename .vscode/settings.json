@@ -5,6 +5,7 @@
         "titleBar.activeForeground": "#EFFEEC"
     },
     "cSpell.words": [
+        "firestore",
         "persistor"
     ]
 }
