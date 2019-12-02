@@ -51,7 +51,7 @@ export const addCollectionAndDocuments = async (
 ) => {
   const collectionRef = firestore.collection(collectionKey);
 
-  //batch transform all calls ( like set() ) into one big group, therefore the code is consistent because if some call doesn't work then the whole app won't work and won't have bugs.
+  //batch transforms all calls ( like set() ) into one big group, therefore the code is consistent because if some call doesn't work then the whole app won't work but won't have bugs.
   const batch = firestore.batch();
   objectsToAdd.forEach(obj => {
     const newDocRef = collectionRef.doc();
@@ -75,15 +75,25 @@ export const convertCollectionsSnapshotToMap = collections => {
 
   return transformedCollection.reduce((accumulator, collection) => {
     accumulator[collection.title.toLowerCase()] = collection;
+
     return accumulator;
   }, {});
+};
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
 };
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: "select_account" });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export default firebase;

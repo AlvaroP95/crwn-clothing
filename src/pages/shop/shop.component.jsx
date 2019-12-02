@@ -2,15 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
 
-import { fetchCollectionsStartAsync } from "../../redux/shop/shop.actions";
+import { fetchCollectionsStart } from "../../redux/shop/shop.actions";
 
 import CollectionsOverviewContainer from "../../components/collections-overview/collections-overview.container";
 import CollectionPageContainer from "../collection/collection.container";
 
 class ShopPage extends React.Component {
   componentDidMount() {
-    const { fetchCollectionsStartAsync } = this.props;
-    fetchCollectionsStartAsync();
+    const { fetchCollectionsStart } = this.props;
+    fetchCollectionsStart();
     // const { updateCollections } = this.props;
     // const collectionRef = firestore.collection("collections");
     /* 
@@ -21,14 +21,16 @@ class ShopPage extends React.Component {
       //   .then(response => response.json())
       //   .then(collections => console.log(collections));
     */
+
     /*
-      get() doesn't let you know when there is an update, unlike onSnapshot
-    */
+      get() doesn't let you know when there is an update, unlike onSnapshot    
     // collectionRef.get().then(snapshot => {
     //   const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
     //   updateCollections(collectionsMap);
     //   this.setState({ loading: false });
     // });
+    */
+
     /* 
       onSnapshot is a listener/observable that let you know whenever the snapshot is updated (or created for the first time)
       //ARE THE SAME BUT THIS ONE IS WITH FIREBASE
@@ -59,7 +61,7 @@ class ShopPage extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchCollectionsStartAsync: () => dispatch(fetchCollectionsStartAsync())
+  fetchCollectionsStart: () => dispatch(fetchCollectionsStart())
 });
 
 export default connect(null, mapDispatchToProps)(ShopPage);
