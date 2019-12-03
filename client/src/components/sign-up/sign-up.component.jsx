@@ -1,7 +1,7 @@
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 import "./sign-up.styles.scss";
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { signUpStart } from "../../redux/user/user.actions";
 import { connect } from "react-redux";
 
