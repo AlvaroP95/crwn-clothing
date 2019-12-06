@@ -1,14 +1,15 @@
 import React from "react";
-import { createStructuredSelector } from "reselect";
-import { selectDirectorySections } from "../../redux/directory/directory.selectors";
-import MenuItem from "../menu-item/menu-item.component";
 import { connect } from "react-redux";
-import "./directory.styles.scss";
+import { createStructuredSelector } from "reselect";
 
-import {} from "../../redux/directory/directory.selectors";
+import { selectDirectorySections } from "../../redux/directory/directory.selectors";
+
+import MenuItem from "../menu-item/menu-item.component";
+
+import { DirectoryMenuContainer } from "./directory.styles";
 
 const Directory = ({ sections }) => (
-  <div className="directory-menu">
+  <DirectoryMenuContainer>
     {sections.map(({ id, ...otherSectionProps }) => (
       <MenuItem key={id} {...otherSectionProps} />
     ))}
@@ -17,10 +18,11 @@ const Directory = ({ sections }) => (
         ))} 
         
         Perfectly fine way, but as the keys are equals to the values (i.e: title={title} we can use a ES6 syntax*/}
-  </div>
+  </DirectoryMenuContainer>
 );
 
 const mapStateToProps = createStructuredSelector({
   sections: selectDirectorySections
 });
+
 export default connect(mapStateToProps)(Directory);
