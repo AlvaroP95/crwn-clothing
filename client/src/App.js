@@ -9,6 +9,7 @@ import { checkUserSession } from "./redux/user/user.actions";
 import { GlobalStyle } from "./global.styles";
 import Spinner from "./components/spinner/spinner.component";
 import ErrorBoundary from "./components/error-boundary/error-boundary.component";
+import * as serviceWorker from "./serviceWorker";
 
 const HomePage = lazy(() => import("./pages/homepage/homepage.component"));
 const ShopPage = lazy(() => import("./pages/shop/shop.component"));
@@ -32,7 +33,7 @@ const App = ({ checkUserSession, currentUser }) => {
             <Route exact path="/" component={HomePage} />
             {/* Switch renders only one of its children */}
             <Route path="/shop" component={ShopPage} />
-            <Route exact path="/checkout" component={CheckoutPage} />
+            {/* <Route exact path="/checkout" component={CheckoutPage} /> */}
             <Route
               exact
               path="/signin"
@@ -56,3 +57,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+serviceWorker.register();
