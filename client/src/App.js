@@ -33,7 +33,7 @@ const App = ({ checkUserSession, currentUser }) => {
             <Route exact path="/" component={HomePage} />
             {/* Switch renders only one of its children */}
             <Route path="/shop" component={ShopPage} />
-            {/* <Route exact path="/checkout" component={CheckoutPage} /> */}
+            <Route exact path="/checkout" component={CheckoutPage} />
             <Route
               exact
               path="/signin"
