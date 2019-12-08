@@ -30,6 +30,7 @@ const CartDropdown = ({ cartItems, history, dispatch }) => (
         history.push("/checkout");
         dispatch(toggleCartHidden());
       }}
+      dropdown
     >
       GO TO CHECKOUT
     </CartDropdownButton>

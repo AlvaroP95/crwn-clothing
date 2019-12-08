@@ -34,34 +34,9 @@ const CollectionItem = ({ item, addItem }) => {
           }, 800);
         }}
         inverted
-        addedSuccessfully
       >
-        Add to cart
+        {itemBought ? "Added!" : "Add to Cart"}
       </AddButton>
-      {/* 
-      {itemBought ? (
-        <AddButton
-          onClick={() => {
-            addItem(item);
-          }}
-          addedSuccessfully
-        >
-          Added
-        </AddButton>
-      ) : (
-        <AddButton
-          onClick={() => {
-            addItem(item);
-            setItemBought("addedSuccessfully");
-            setTimeout(() => {
-              setItemBought("");
-            }, 800);
-          }}
-          inverted
-        >
-          Add to cart
-        </AddButton>
-      )} */}
     </CollectionItemContainer>
   );
 };

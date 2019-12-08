@@ -57,6 +57,11 @@ export const OptionLink = styled(NavLink)`
     border-bottom: darkgrey solid 1px;
   }
 
+  @media screen and (max-width: 385px) {
+    padding: 15px 6px;
+    font-size: 17px;
+  }
+
   @media screen and (max-width: 345px) {
     padding: 15px 6px;
     font-size: 16px;

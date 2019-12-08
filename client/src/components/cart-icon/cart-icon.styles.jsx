@@ -13,8 +13,8 @@ export const CartContainer = styled.div`
 `;
 
 export const ShoppingIcon = styled(ShoppingIconSVG)`
-  width: 26px;
-  height: 26px;
+  width: 25px;
+  height: 25px;
   z-index: 5;
 
   &:hover {

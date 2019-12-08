@@ -42,6 +42,19 @@ const addedSuccessfully = css`
   cursor: not-allowed;
 `;
 
+const dropdown = css`
+  background-color: black;
+  color: white;
+  border: none;
+
+  &:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+  }
+  width: 200px;
+`;
+
 const getButtonStyles = props => {
   if (props.isGoogleSignIn) {
     return googleSignInStyles;
@@ -53,6 +66,10 @@ const getButtonStyles = props => {
 
   if (props.addedSuccessfully) {
     return addedSuccessfully;
+  }
+
+  if (props.dropdown) {
+    return dropdown;
   }
 
   return buttonStyles;
