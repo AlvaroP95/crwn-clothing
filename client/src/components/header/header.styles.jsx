@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const HeaderContainer = styled.div`
   height: 70px;
@@ -18,9 +18,12 @@ export const HeaderContainer = styled.div`
 export const LogoContainer = styled(Link)`
   height: 100%;
   width: 70px;
+  margin-top: -8px;
   padding: 25px;
+  margin-bottom: 90px;
 
   @media screen and (max-width: 800px) {
+    margin-top: 0;
     width: 50px;
     padding: 0;
   }
@@ -38,7 +41,24 @@ export const OptionsContainer = styled.div`
   }
 `;
 
-export const OptionLink = styled(Link)`
-  padding: 10px 15px;
+export const OptionLink = styled(NavLink)`
+  padding: 15px 15px;
+  font-size: 18px;
+  text-align: center;
+  white-space: nowrap;
   cursor: pointer;
+
+  &:hover,
+  &.active,
+  &:active {
+    padding-bottom: 3px;
+    margin-bottom: 10px;
+
+    border-bottom: darkgrey solid 1px;
+  }
+
+  @media screen and (max-width: 345px) {
+    padding: 15px 6px;
+    font-size: 16px;
+  }
 `;

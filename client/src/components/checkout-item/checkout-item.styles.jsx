@@ -11,7 +11,7 @@ export const CheckoutItemContainer = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  width: 23%;
+  width: 24%;
   padding-right: 15px;
   img {
     width: 100%;
@@ -20,7 +20,19 @@ export const ImageContainer = styled.div`
 `;
 
 export const TextContainer = styled.span`
-  width: 23%;
+  width: 24%;
+
+  @media screen and (max-width: 450px) {
+    padding-right: 15px;
+  }
+`;
+
+export const PriceContainer = styled.span`
+  width: 14%;
+
+  @media screen and (max-width: 450px) {
+    padding-right: 15px;
+  }
 `;
 
 export const QuantityContainer = styled(TextContainer)`
@@ -34,6 +46,7 @@ export const QuantityContainer = styled(TextContainer)`
 `;
 
 export const RemoveButtonContainer = styled.div`
-  padding-left: 12px;
+  text-align: center;
   cursor: pointer;
+  width: 14%;
 `;

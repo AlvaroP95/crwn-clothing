@@ -3,21 +3,25 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
 import { toggleCartHidden } from "../../redux/cart/cart.actions";
-import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
+import {
+  selectCartItemsCount,
+  selectCartHidden
+} from "../../redux/cart/cart.selectors";
 
 import {
   CartContainer,
   ShoppingIcon,
+  ShoppingIconActive,
   ItemCountContainer
 } from "./cart-icon.styles";
 
-const CartIcon = ({ toggleCartHidden, itemCount }) => (
+const CartIcon = ({ toggleCartHidden, itemCount, hidden }) => (
   <CartContainer onClick={toggleCartHidden}>
-    <ShoppingIcon />
+    {hidden ? <ShoppingIcon /> : <ShoppingIconActive />}
+
     <ItemCountContainer>{itemCount}</ItemCountContainer>
   </CartContainer>
 );
-
 const mapDispatchToProps = dispatch => ({
   toggleCartHidden: () => dispatch(toggleCartHidden())
 });
@@ -25,7 +29,8 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = createStructuredSelector({
   //20. Selectors in Redux. 21. Reselect Library
   //Selectors allow components to not re-render whenever mapStateToProps is called. Components render only when the corresponding values/state updates
-  itemCount: selectCartItemsCount
+  itemCount: selectCartItemsCount,
+  hidden: selectCartHidden
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
