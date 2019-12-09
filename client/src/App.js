@@ -14,7 +14,7 @@ import * as serviceWorker from "./serviceWorker";
 const HomePage = lazy(() => import("./pages/homepage/homepage.component"));
 const ShopPage = lazy(() => import("./pages/shop/shop.component"));
 const SignInAndSignUpPage = lazy(() =>
-  import("./pages/sign-in-and-sign-up/sign-in-and-sign-up.component")
+  import("./pages/sign-in-and-sign-up/sign-in-and-sign-up.container")
 );
 const CheckoutPage = lazy(() => import("./pages/checkout/checkout.component"));
 

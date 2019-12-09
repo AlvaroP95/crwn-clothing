@@ -1,6 +1,6 @@
 import React from "react";
 
-import SignInPage from "../../components/sign-in/sign-in.container";
+import SignIn from "../../components/sign-in/sign-in.component";
 import SignUp from "../../components/sign-up/sign-up.component";
 
 import {
@@ -8,12 +8,12 @@ import {
   HorizontalRule
 } from "./sign-in-and-sign-up.styles";
 
-const SignInAndSignUpPage = () => (
+const SignInAndSignUp = () => (
   <SignInAndSignUpContainer>
-    <SignInPage />
+    <SignIn />
     <HorizontalRule />
     <SignUp />
   </SignInAndSignUpContainer>
 );
 
-export default SignInAndSignUpPage;
+export default SignInAndSignUp;
