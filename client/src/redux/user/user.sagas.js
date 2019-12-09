@@ -49,6 +49,7 @@ export function* signInWithEmail({ payload: { email, password } }) {
   } catch (error) {
     //Catch needed because signInWithEmailAndPassword can fail
     yield put(signInFailure(error));
+    alert(error);
   }
 }
 
@@ -64,15 +65,6 @@ export function* isUserAuthenticated() {
 
 export function* onGoogleSignInStart() {
   yield takeLatest(UserActionTypes.GOOGLE_SIGN_IN_START, signInWithGoogle);
-}
-
-export function* signOut() {
-  try {
-    yield auth.signOut();
-    yield put(signOutSuccess());
-  } catch (error) {
-    yield put(signOutFailure(error));
-  }
 }
 
 export function* signUp({ payload: { email, password, displayName } }) {
@@ -98,6 +90,15 @@ export function* onCheckUserSession() {
 
 export function* onSignOutStart() {
   yield takeLatest(UserActionTypes.SIGN_OUT_START, signOut);
+}
+
+export function* signOut() {
+  try {
+    yield auth.signOut();
+    yield put(signOutSuccess());
+  } catch (error) {
+    yield put(signOutFailure(error));
+  }
 }
 
 export function* onSignUpStart() {
