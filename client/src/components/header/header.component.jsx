@@ -14,6 +14,7 @@ import {
 } from "./header.styles";
 import { signOutStart } from "../../redux/user/user.actions";
 
+// import Backdrop from "../backdrop/backdrop.component";
 const Header = ({ currentUser, hidden, signOutStart }) => {
   return (
     <HeaderContainer>
