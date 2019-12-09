@@ -14,28 +14,36 @@ import {
   CartItemsContainer
 } from "./cart-dropdown.styles";
 
-const CartDropdown = ({ cartItems, history, dispatch }) => (
-  <CartDropdownContainer>
-    <CartItemsContainer>
-      {cartItems.length ? (
-        cartItems.map(cartItem => (
-          <CartItem key={cartItem.id} item={cartItem} />
-        ))
-      ) : (
-        <EmptyMessageContainer>Your cart is empty</EmptyMessageContainer>
-      )}
-    </CartItemsContainer>
-    <CartDropdownButton
-      onClick={() => {
-        history.push("/checkout");
-        dispatch(toggleCartHidden());
-      }}
-      dropdown
-    >
-      GO TO CHECKOUT
-    </CartDropdownButton>
-  </CartDropdownContainer>
-);
+import Backdrop from "../backdrop/backdrop.component";
+
+const CartDropdown = ({ cartItems, history, dispatch, hidden }) => {
+  return (
+    <div>
+      <Backdrop hidden={hidden} clicked={modalClosed} />
+
+      <CartDropdownContainer>
+        <CartItemsContainer>
+          {cartItems.length ? (
+            cartItems.map(cartItem => (
+              <CartItem key={cartItem.id} item={cartItem} />
+            ))
+          ) : (
+            <EmptyMessageContainer>Your cart is empty</EmptyMessageContainer>
+          )}
+        </CartItemsContainer>
+        <CartDropdownButton
+          onClick={() => {
+            history.push("/checkout");
+            dispatch(toggleCartHidden());
+          }}
+          dropdown
+        >
+          GO TO CHECKOUT
+        </CartDropdownButton>
+      </CartDropdownContainer>
+    </div>
+  );
+};
 
 const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems

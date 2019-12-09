@@ -21,6 +21,11 @@ export const CheckoutPageContainer = styled.div`
   }
 `;
 
+export const TrashIconContainer = styled.div`
+  margin-top: 20px;
+  cursor: pointer;
+`;
+
 export const CheckoutHeaderContainer = styled.div`
   width: 100%;
   font-size: 18px;
@@ -28,6 +33,11 @@ export const CheckoutHeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid darkgrey;
+`;
+
+export const StartAddingMessage = styled.p`
+  font-size: 28px;
+  text-align: center;
 `;
 
 export const HeaderBlockContainer = styled.div`
