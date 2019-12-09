@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { compose } from "redux";
+// import { compose } from "redux";
 import { createStructuredSelector } from "reselect";
 
 import WithSpinner from "../../components/with-spinner/with-spinner.component";

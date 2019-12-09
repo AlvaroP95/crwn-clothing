@@ -1,6 +1,6 @@
 import React from "react";
 
-import SignIn from "../../components/sign-in/sign-in.component";
+import SignInPage from "../../components/sign-in/sign-in.container";
 import SignUp from "../../components/sign-up/sign-up.component";
 
 import {
@@ -10,7 +10,7 @@ import {
 
 const SignInAndSignUpPage = () => (
   <SignInAndSignUpContainer>
-    <SignIn />
+    <SignInPage />
     <HorizontalRule />
     <SignUp />
   </SignInAndSignUpContainer>

@@ -9,7 +9,7 @@ import {
   AddButton,
   BackgroundImage,
   NameContainer,
-  AddedSuccessfully,
+  // AddedSuccessfully,
   PriceContainer
 } from "./collection-item.styles";
 
