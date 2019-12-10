@@ -1,14 +1,18 @@
-import React, { useEffect, lazy, Suspense } from "react";
+import React, { useEffect, lazy, Suspense, useState } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import Header from "./components/header/header.component";
-import "./components/header/header.styles.scss";
 import { connect } from "react-redux";
+
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/user/user.selectors";
+
 import { checkUserSession } from "./redux/user/user.actions";
-import { GlobalStyle } from "./global.styles";
+
+import Header from "./components/header/header.component";
+import "./components/header/header.styles.scss";
 import Spinner from "./components/spinner/spinner.component";
 import ErrorBoundary from "./components/error-boundary/error-boundary.component";
+import ItemAddedNotificationsContainer from "./components/item-added-notifications/item-added-notifications.component";
+import { GlobalStyle } from "./global.styles";
 import * as serviceWorker from "./serviceWorker";
 
 const HomePage = lazy(() => import("./pages/homepage/homepage.component"));
@@ -22,6 +26,8 @@ const App = ({ checkUserSession, currentUser }) => {
   useEffect(() => {
     checkUserSession();
   }, [checkUserSession]);
+
+  // const [recentlyAddedItemsCount, setRecentlyAddedItemsCount] = useState(0);
 
   return (
     <div>
@@ -44,6 +50,8 @@ const App = ({ checkUserSession, currentUser }) => {
           </Suspense>
         </ErrorBoundary>
       </Switch>
+      {/* <>{Array(recentlyAddedItemsCount).fill(<Header />)}</> */}
+      <ItemAddedNotificationsContainer />
     </div>
   );
 };

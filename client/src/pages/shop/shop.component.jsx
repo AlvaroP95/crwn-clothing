@@ -32,7 +32,6 @@ const ShopPage = ({ match, fetchCollectionsStart }) => {
           component={CollectionPageContainer}
         />
       </Suspense>
-      ;
     </div>
   );
 };

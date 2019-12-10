@@ -4,6 +4,7 @@ import { addItemToCart, removeItemFromCart } from "./cart.utils";
 const INITIAL_STATE = {
   hidden: true,
   cartItems: []
+  // itemAdded: false
 };
 
 const cartReducer = (state = INITIAL_STATE, action) => {
@@ -17,7 +18,13 @@ const cartReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         cartItems: addItemToCart(state.cartItems, action.payload)
+        // itemAdded: true
       };
+    // case CartActionTypes.ITEM_ADDED_TIMEOUT:
+    //   return {
+    //     ...state,
+    //     itemAdded: false
+    //   };
     case CartActionTypes.REMOVE_ITEM:
       return {
         ...state,
