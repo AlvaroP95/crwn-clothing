@@ -29,7 +29,8 @@ const ItemAddedNotificationsContainer = ({
               }}
               itemAddedGoToCheckout
             >
-              {recentlyAddedItem.name} ADDED. CLICK TO CHECKOUT
+              {recentlyAddedItem.name} ADDED
+              <br /> CLICK TO CHECKOUT
             </CustomButton>
             <CustomButton
               onClick={() => {

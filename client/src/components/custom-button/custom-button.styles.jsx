@@ -86,6 +86,7 @@ const itemAddedGoToCheckout = css`
   ${buttonStyles};
   padding: 0 15px 0 15px;
   max-width: 200px;
+  height: 70px;
 `;
 
 const closeItemAdded = css`
@@ -94,6 +95,7 @@ const closeItemAdded = css`
   border-left: 1px solid white;
   /* margin-top: 20px; */
   max-width: 20px;
+  height: 70px;
 `;
 
 export const CustomButtonContainer = styled.button`
