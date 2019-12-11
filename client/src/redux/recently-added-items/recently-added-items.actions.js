@@ -8,3 +8,7 @@ export const setRecentlyAddedItem = item => ({
 export const removeRecentlyAddedItem = () => ({
   type: RecentlyAddedItemsActionTypes.REMOVE_RECENTLY_ADDED_ITEM
 });
+
+export const toggleVisibility = () => ({
+  type: RecentlyAddedItemsActionTypes.TOGGLE_VISIBILITY
+});

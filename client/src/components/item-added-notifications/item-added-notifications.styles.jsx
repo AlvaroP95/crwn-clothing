@@ -8,6 +8,18 @@ export const ItemAddedNotificationContainer = styled.div`
   /* Styles for fix at bottom */
   position: fixed;
   bottom: 0%;
+  /* bottom: -170px; */
+
+  /* Transition on render */
+  transition: transform 0.45s ease-out;
+
+  &.Open {
+    transform: translateY(0);
+  }
+
+  &.Close {
+    transform: translateY(100%);
+  }
 
   @media screen and (max-width: 450px) {
     padding-right: 20px;

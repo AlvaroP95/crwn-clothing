@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import { createStructuredSelector } from "reselect";
-import { selectRecentlyAddedItem } from "../../redux/recently-added-items/recently-added-items.selectors";
 import { connect } from "react-redux";
-import { removeRecentlyAddedItem } from "../../redux/recently-added-items/recently-added-items.actions";
+import {
+  selectRecentlyAddedItem,
+  selectRecentlyAddedVisibility
+} from "../../redux/recently-added-items/recently-added-items.selectors";
+import {
+  removeRecentlyAddedItem,
+  toggleVisibility
+} from "../../redux/recently-added-items/recently-added-items.actions";
 
 import { withRouter } from "react-router-dom";
 
@@ -15,45 +21,54 @@ import {
 const ItemAddedNotificationsContainer = ({
   recentlyAddedItem,
   removeRecentlyAddedItem,
+  isVisible,
+  toggleVisibility,
   history
 }) => {
+  const [itemName, setItemName] = useState(recentlyAddedItem.name);
   return (
     <>
-      {Object.keys(recentlyAddedItem).length ? (
-        <ItemAddedNotificationContainer>
-          <ItemAddedNotificationSubContainer>
-            <CustomButton
-              onClick={() => {
-                removeRecentlyAddedItem();
-                history.push("/checkout");
-              }}
-              itemAddedGoToCheckout
-            >
-              {recentlyAddedItem.name} ADDED
-              <br /> CLICK TO CHECKOUT
-            </CustomButton>
-            <CustomButton
-              onClick={() => {
-                removeRecentlyAddedItem();
-              }}
-              closeItemAdded
-            >
-              {/* {recentlyAddedItem.imageUrl} */}
-              &#10005;
-            </CustomButton>
-          </ItemAddedNotificationSubContainer>
-        </ItemAddedNotificationContainer>
-      ) : null}
+      <ItemAddedNotificationContainer className={isVisible ? "Open" : "Close"}>
+        <ItemAddedNotificationSubContainer>
+          <CustomButton
+            onClick={() => {
+              setItemName(recentlyAddedItem.name);
+              removeRecentlyAddedItem();
+              history.push("/checkout");
+            }}
+            itemAddedGoToCheckout
+          >
+            {/* {itemName} ADDED */}
+            {isVisible
+              ? recentlyAddedItem.name + " ADDED"
+              : itemName + " ADDED"}
+            <br /> CLICK TO CHECKOUT
+          </CustomButton>
+          <CustomButton
+            onClick={() => {
+              setItemName(recentlyAddedItem.name);
+              removeRecentlyAddedItem();
+              toggleVisibility();
+            }}
+            closeItemAdded
+          >
+            {/* {recentlyAddedItem.imageUrl} */}
+            &#10005;
+          </CustomButton>
+        </ItemAddedNotificationSubContainer>
+      </ItemAddedNotificationContainer>
     </>
   );
 };
 
 const mapStateToProps = createStructuredSelector({
-  recentlyAddedItem: selectRecentlyAddedItem
+  recentlyAddedItem: selectRecentlyAddedItem,
+  isVisible: selectRecentlyAddedVisibility
 });
 
 const mapDispatchToProps = dispatch => ({
-  removeRecentlyAddedItem: () => dispatch(removeRecentlyAddedItem())
+  removeRecentlyAddedItem: () => dispatch(removeRecentlyAddedItem()),
+  toggleVisibility: () => dispatch(toggleVisibility())
 });
 
 export default withRouter(

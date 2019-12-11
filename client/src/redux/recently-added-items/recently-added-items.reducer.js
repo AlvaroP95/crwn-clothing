@@ -2,7 +2,8 @@ import RecentlyAddedItemsTypes from "./recently-added-items.types";
 import { addRecentlyAddedItem } from "./recently-added-items.utils";
 
 const INITIAL_STATE = {
-  item: {}
+  item: {},
+  isVisible: false
 };
 
 const recentlyAddedItemsReducer = (state = INITIAL_STATE, action) => {
@@ -10,13 +11,16 @@ const recentlyAddedItemsReducer = (state = INITIAL_STATE, action) => {
     case RecentlyAddedItemsTypes.SET_RECENTLY_ADDED_ITEM:
       return {
         ...state,
-        item: addRecentlyAddedItem(state.item, action.payload)
+        item: addRecentlyAddedItem(state.item, action.payload),
+        isVisible: true
       };
     case RecentlyAddedItemsTypes.REMOVE_RECENTLY_ADDED_ITEM:
       return {
         ...state,
-        item: {}
+        item: {},
+        isVisible: false
       };
+
     default:
       return state;
   }
