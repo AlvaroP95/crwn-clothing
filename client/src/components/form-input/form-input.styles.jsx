@@ -2,11 +2,17 @@ import styled, { css } from "styled-components";
 
 const subColor = "grey";
 const mainColor = "black";
+const errorColor = "red";
 
 const shrinkLabelStyles = css`
-  top: -14px;
-  font-size: 12px;
+  top: -17px;
+  font-size: 14px;
   color: ${mainColor};
+  left: 0;
+`;
+
+const errorLabelStyles = css`
+  color: ${errorColor};
 `;
 
 export const GroupContainer = styled.div`
@@ -27,13 +33,24 @@ export const FormInputContainer = styled.input`
   width: 100%;
   border: none;
   border-radius: 0;
-  border-bottom: 1px solid ${subColor};
   margin: 25px 0;
+  border-bottom: 1px solid ${subColor};
+
+  &.error {
+    border-bottom: 1px solid ${errorColor};
+    background: rgba(255, 0, 0, 0.2);
+  }
+
   &:focus {
     outline: none;
   }
+
   &:focus ~ label {
     ${shrinkLabelStyles}
+  }
+
+  &.error:focus ~ label {
+    ${errorLabelStyles}
   }
 `;
 
@@ -46,7 +63,17 @@ export const FormInputLabel = styled.label`
   left: 5px;
   top: 10px;
   transition: 300ms ease all;
+
   &.shrink {
     ${shrinkLabelStyles}
+  }
+
+  &.error {
+    ${errorLabelStyles}
+  }
+
+  &.error.shrink {
+    ${shrinkLabelStyles}
+    ${errorLabelStyles}
   }
 `;
