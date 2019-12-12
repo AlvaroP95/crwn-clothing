@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 
 import FormInput from "../form-input/form-input.component";
@@ -11,7 +11,6 @@ import {
 
 import { Formik } from "formik";
 import * as Yup from "yup";
-import FormError from "../form-errors/form-errors";
 
 import {
   SignInContainer,
@@ -20,13 +19,6 @@ import {
 } from "./sign-in.styles";
 
 const SignIn = ({ emailSignInStart, googleSignInStart }) => {
-  const [userCredentials, setCredentials] = useState({
-    email: "",
-    password: ""
-  });
-
-  const { email, password } = userCredentials;
-
   const ValidationSchema = Yup.object().shape({
     email: Yup.string()
       .email("Must be a valid email address")
@@ -37,17 +29,6 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
       .max(30, "Password too long!")
       .required("Password required")
   });
-
-  // const handleSubmit = async event => {
-  //   event.preventDefault();
-
-  //   emailSignInStart(email, password);
-  // };
-
-  // const handleChange = event => {
-  //   const { value, name } = event.target;
-  //   setCredentials({ ...userCredentials, [name]: value });
-  // };
 
   return (
     <SignInContainer>
@@ -68,7 +49,6 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
           return errors;
         }}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
-          console.log(values.email, values.password);
           setSubmitting(true);
           emailSignInStart(values.email, values.password);
           resetForm();
@@ -81,9 +61,7 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
           touched,
           handleChange,
           handleBlur,
-          handleSubmit,
-          isSubmitting,
-          setFieldValue
+          handleSubmit
         }) => (
           <form onSubmit={handleSubmit}>
             <FormInput
@@ -92,28 +70,20 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
               handleChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
-              // className={touched.email && errors.email ? "has-error" : null}
               label="email"
               touched={touched.email}
               error={errors.email}
-              // required //
             />
-            {/* <FormError touched={touched.email} message={errors.email} /> */}
             <FormInput
               name="password"
               type="password"
               value={values.password}
               handleChange={handleChange}
               onBlur={handleBlur}
-              // className={
-              //   touched.password && errors.password ? "has-error" : null
-              // }
               label="password"
-              touched={touched.email}
+              touched={touched.password}
               error={errors.password}
-              // required //
             />
-            {/* <FormError touched={touched.password} message={errors.password} /> */}
             <ButtonsBarContainer>
               <CustomButton type="submit"> Sign in </CustomButton>
               <CustomButton

@@ -8,7 +8,7 @@ const shrinkLabelStyles = css`
   top: -17px;
   font-size: 14px;
   color: ${mainColor};
-  left: 0;
+  left: 1px;
 `;
 
 const errorLabelStyles = css`
@@ -76,4 +76,12 @@ export const FormInputLabel = styled.label`
     ${shrinkLabelStyles}
     ${errorLabelStyles}
   }
+`;
+
+export const FormInputError = styled.div`
+  font-size: 16px;
+  color: ${errorColor};
+  bottom: -23px;
+  left: 1px;
+  position: absolute;
 `;

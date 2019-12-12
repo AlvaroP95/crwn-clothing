@@ -8,6 +8,9 @@ import { signUpStart } from "../../redux/user/user.actions";
 
 import { SignUpContainer, SignUpTitle } from "./sign-up.styles";
 
+import { Formik } from "formik";
+import * as Yup from "yup";
+
 const SignUp = ({ signUpStart }) => {
   const [userCredentials, setUserCredentials] = useState({
     displayName: "",
