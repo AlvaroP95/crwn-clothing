@@ -27,6 +27,10 @@ const getButtonStyles = props => {
 
   return buttonStyles;
 };
+
+const doubleButton = css`
+  padding: 0 27px 0 27px;
+`;
 const buttonStyles = css`
   background-color: black;
   color: white;
@@ -36,6 +40,16 @@ const buttonStyles = css`
     background-color: white;
     color: black;
     border: 1px solid black;
+  }
+
+  &.doubleButton {
+    @media screen and (max-width: 350px) {
+      ${doubleButton}
+    }
+  }
+
+  &.signUp {
+    width: 100%;
   }
 `;
 
@@ -59,6 +73,12 @@ const googleSignInStyles = css`
   &:hover {
     background-color: #356fff;
     border: none;
+  }
+
+  &.doubleButton {
+    @media screen and (max-width: 350px) {
+      ${doubleButton}
+    }
   }
 `;
 

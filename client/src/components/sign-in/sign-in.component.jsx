@@ -21,13 +21,13 @@ import {
 const SignIn = ({ emailSignInStart, googleSignInStart }) => {
   const ValidationSchema = Yup.object().shape({
     email: Yup.string()
-      .email("Must be a valid email address")
-      .max(255, "Too Long!")
-      .required("Email required"),
+      .email("Must be a valid email address.")
+      .max(80, "Email too long.")
+      .required("Email required."),
     password: Yup.string()
-      .min(6, "Password must be 6 characters or more")
-      .max(30, "Password too long!")
-      .required("Password required")
+      .min(6, "Password must be 6 characters or more.")
+      .max(30, "Password too long.")
+      .required("Password required.")
   });
 
   return (
@@ -37,15 +37,12 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
 
       <Formik
         initialValues={{
-          name: "",
           email: "",
-          country: "",
-          postalCode: ""
+          password: ""
         }}
         validationSchema={ValidationSchema}
         validate={values => {
           let errors = {};
-
           return errors;
         }}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
@@ -67,9 +64,9 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
             <FormInput
               name="email"
               type="email"
+              value={values.email}
               handleChange={handleChange}
               onBlur={handleBlur}
-              value={values.email}
               label="email"
               touched={touched.email}
               error={errors.email}
@@ -85,8 +82,12 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
               error={errors.password}
             />
             <ButtonsBarContainer>
-              <CustomButton type="submit"> Sign in </CustomButton>
+              <CustomButton className="doubleButton" type="submit">
+                {" "}
+                Sign in{" "}
+              </CustomButton>
               <CustomButton
+                className="doubleButton"
                 type="button"
                 onClick={googleSignInStart}
                 isGoogleSignIn

@@ -1,6 +1,5 @@
-import React, { useState } from "react";
 import { connect } from "react-redux";
-
+import React from "react";
 import { addItem } from "../../redux/cart/cart.actions";
 import { setRecentlyAddedItem } from "../../redux/recently-added-items/recently-added-items.actions";
 
@@ -10,16 +9,11 @@ import {
   AddButton,
   BackgroundImage,
   NameContainer,
-  // AddedSuccessfully,
   PriceContainer
 } from "./collection-item.styles";
 
 const CollectionItem = ({ item, addItem, setRecentlyAddedItem }) => {
   const { name, price, imageUrl } = item;
-  // const [itemBought, setItemBought] = useState("");
-  // const [recentlyAddedItemsCount, setRecentlyAddedItemsCount] = useState(0);
-
-  // return  <>
   return (
     <CollectionItemContainer>
       <BackgroundImage className="image" imageUrl={imageUrl} />
