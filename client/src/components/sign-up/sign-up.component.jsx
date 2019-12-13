@@ -58,7 +58,7 @@ const SignUp = ({ signUpStart }) => {
           const { displayName, email, password } = values;
           setSubmitting(true);
           signUpStart({ displayName, email, password });
-          resetForm();
+          // resetForm();
           setSubmitting(false);
         }}
       >

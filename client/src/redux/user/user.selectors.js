@@ -14,3 +14,13 @@ export const selectIsUserLogging = createSelector(
   [selectUser],
   user => user.isLoading
 );
+
+export const selectHasAuthenticationError = createSelector(
+  [selectUser],
+  user => user.error
+);
+
+export const selectUserInputsBeforeLogin = createSelector(
+  [selectUser],
+  user => user.userInputsBeforeLogin
+);

@@ -49,7 +49,6 @@ export function* signInWithEmail({ payload: { email, password } }) {
   } catch (error) {
     //Catch needed because signInWithEmailAndPassword can fail
     yield put(signInFailure(error));
-    alert(error);
   }
 }
 

@@ -84,4 +84,10 @@ export const FormInputError = styled.div`
   bottom: -23px;
   left: 1px;
   position: absolute;
+
+  &.error.long {
+    bottom: -45px;
+    line-height: 1;
+    bottom: -33px;
+  }
 `;
