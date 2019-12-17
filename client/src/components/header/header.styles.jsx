@@ -29,6 +29,8 @@ export const LogoContainer = styled(Link)`
   }
 `;
 
+export const SearchBarContainer = styled.div``;
+
 export const OptionsContainer = styled.div`
   width: 50%;
   height: 100%;

@@ -37,41 +37,11 @@ const FormInput = ({
       setClasses("error long");
       if (value) {
         setClasses("error long shrink");
-        console.log("jeje", classes);
       }
     } else {
       setClasses("");
     }
-    //only left auto set long error
-    // if (value && error && touched) {
-    //   if (error.length >= 42) {
-    //     setClasses("shrink error long");
-    //   } else {
-    //     setClasses("shrink error");
-    //   }
-    // } else if (value && !error) {
-    //   setClasses("shrink");
-    // } else if (!value && error && touched) {
-    //   if (error.length < 42) {
-    //     setClasses("error");
-    //   } else {
-    //     setClasses("error long");
-    //   }
-    // }
-    // else {
-    //   setClasses("");
-    // }
-    // working
-    // if (value && (error) && touched) {
-    //   setClasses("shrink error");
-    // } else if (value && !error) {
-    //   setClasses("shrink");
-    // } else if (!value && error && touched) {
-    //   setClasses("error");
-    // } else {
-    //   setClasses("");
-    // }
-  }, [value, error, classes, touched]);
+  }, [value, error, classes, touched, hasAttemptedAuthError]);
   return (
     <GroupContainer>
       <FormInputContainer

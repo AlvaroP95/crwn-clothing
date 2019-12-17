@@ -1,8 +1,14 @@
 import React, { useEffect, lazy, Suspense } from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
+import { createStructuredSelector } from "reselect";
 
 import { fetchCollectionsStart } from "../../redux/shop/shop.actions";
+
+import {
+  selectIsCollectionFetching,
+  selectIsCollectionsLoaded
+} from "../../redux/shop/shop.selectors";
 
 import Spinner from "../../components/spinner/spinner.component";
 
@@ -14,10 +20,14 @@ const CollectionPageContainer = lazy(() =>
   import("../collection/collection.container")
 );
 
-const ShopPage = ({ match, fetchCollectionsStart }) => {
+const ShopPage = ({ match, fetchCollectionsStart, isFetching, isLoaded }) => {
   useEffect(() => {
-    fetchCollectionsStart();
-  }, [fetchCollectionsStart]);
+    //
+    if (!isFetching && !isLoaded) {
+      console.log("no debería");
+      fetchCollectionsStart();
+    }
+  }, [fetchCollectionsStart, isFetching, isLoaded]);
 
   return (
     <div className="shop-page">
@@ -36,8 +46,13 @@ const ShopPage = ({ match, fetchCollectionsStart }) => {
   );
 };
 
+const mapStateToProps = createStructuredSelector({
+  isFetching: selectIsCollectionFetching,
+  isLoaded: selectIsCollectionsLoaded
+});
+
 const mapDispatchToProps = dispatch => ({
   fetchCollectionsStart: () => dispatch(fetchCollectionsStart())
 });
 
-export default connect(null, mapDispatchToProps)(ShopPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ShopPage);

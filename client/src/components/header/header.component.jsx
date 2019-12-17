@@ -1,30 +1,71 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { connect } from "react-redux";
 import CartIcon from "../cart-icon/cart-icon.component";
-import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+import { Redirect } from "react-router";
+
 import { createStructuredSelector } from "reselect";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
+import { signOutStart } from "../../redux/user/user.actions";
+
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+
 import {
   HeaderContainer,
   LogoContainer,
   OptionsContainer,
-  OptionLink
+  OptionLink,
+  SearchBarContainer
 } from "./header.styles";
-import { signOutStart } from "../../redux/user/user.actions";
 
-// import Backdrop from "../backdrop/backdrop.component";
 const Header = ({ currentUser, hidden, signOutStart }) => {
+  const [redirect, setRedirect] = useState(false);
+  const [inputtedSearchedItems, setInputtedSearchedItems] = useState("");
+
+  useEffect(() => {
+    setRedirect(false);
+  }, [redirect]);
+
+  const handleChange = e => {
+    setInputtedSearchedItems(e.target.value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    setRedirect(true);
+  };
+
+  const handleRedirect = () => {
+    return (
+      <>
+        <Redirect
+          to={{
+            pathname: "/search",
+            state: { searchedItems: inputtedSearchedItems }
+          }}
+        />
+      </>
+    );
+  };
+
   return (
     <HeaderContainer>
       <LogoContainer to="/">
         <Logo />
       </LogoContainer>
+
+      <SearchBarContainer>
+        {redirect ? handleRedirect() : null}
+        <form onSubmit={handleSubmit}>
+          <input type="text" onChange={handleChange} />
+          <button type="submit"> search </button>
+        </form>
+      </SearchBarContainer>
+
       <OptionsContainer>
         <OptionLink to="/shop">SHOP</OptionLink>
         <OptionLink to="/checkout">CHECKOUT</OptionLink>
-        {/* <OptionLink to="/shop">CONTACT</OptionLink> */}
         {currentUser ? (
           // <OptionDiv onClick={() => auth.signOut()}>SIGN OUT</OptionDiv>
           //ARE THE SAME

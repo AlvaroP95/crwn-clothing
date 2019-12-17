@@ -21,6 +21,7 @@ const SignInAndSignUpPage = lazy(() =>
   import("./pages/sign-in-and-sign-up/sign-in-and-sign-up.container")
 );
 const CheckoutPage = lazy(() => import("./pages/checkout/checkout.component"));
+const SearchPage = lazy(() => import("./pages/searched-items/searched-items"));
 
 const App = ({ checkUserSession, currentUser }) => {
   useEffect(() => {
@@ -47,6 +48,7 @@ const App = ({ checkUserSession, currentUser }) => {
                 currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
               }
             />
+            <Route exact path="/search" component={SearchPage} />
           </Suspense>
         </ErrorBoundary>
       </Switch>

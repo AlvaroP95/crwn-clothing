@@ -1,5 +1,3 @@
-//SIGN IN ANDANDO
-
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
@@ -43,7 +41,6 @@ const SignIn = ({
       .required("Password required.")
   });
 
-  const [err, setErr] = useState(userLogError); //
   const [emailError, setEmailError] = useState("");
   const [emailBeforeError, setEmailBeforeError] = useState("");
   const [passError, setPassError] = useState("");
@@ -51,45 +48,24 @@ const SignIn = ({
     if (userLogError) {
       switch (userLogError.code) {
         case "auth/wrong-password":
-          console.log("pasw has error", userLogError);
           setPassError(userLogError.message);
-          console.log(passError);
           setEmailBeforeError(userInputsBeforeLogin.email);
           break;
         case "auth/user-not-found":
-        case "Error: Too many unsuccessful login attempts. Please try again later":
-          console.log("email has error", userInputsBeforeLogin.login);
+        case "auth/too-many-requests":
           setEmailError(userLogError.message);
           setEmailBeforeError(userInputsBeforeLogin.email);
           break;
         default:
-          console.log("something has error", userLogError);
-
           break;
       }
     }
-
-    // return () => {
-    //   "cleanup";
-    // };
-  }, [passError]);
-
-  // if (
-  //   err ==
-  //   "Error: The password is invalid or the user does not have a password."
-  // ) {
-  //   console.log("has pasw error");
-  //   // setPasswordError(err);
-  //   setErr();
-  // } else if (
-  //   err ==
-  //   "Error: The password is invalid or the user does not have a password."
-  // ) {
-  //   console.log("has pasw error");
-  //   // setPasswordError(err);
-  //   setErr();
-  // }
-
+  }, [
+    passError,
+    userInputsBeforeLogin,
+    userInputsBeforeLogin.email,
+    userLogError
+  ]);
   return (
     <SignInContainer>
       <SignInTitle>Sign In</SignInTitle>
@@ -107,7 +83,6 @@ const SignIn = ({
         }}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
-          // setErr(values.email);
           emailSignInStart(values.email, values.password);
           resetForm();
           setSubmitting(false);

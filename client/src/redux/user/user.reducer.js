@@ -22,7 +22,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         currentUser: null,
         error: null
-        // userInputsBeforeLogin: {}
       };
     case UserActionTypes.EMAIL_SIGN_IN_START:
     case UserActionTypes.GOOGLE_SIGN_IN_START:
@@ -39,7 +38,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         error: action.payload,
         isLoading: false
-        // userInputsBeforeLogin: {}
       };
     default:
       return state;

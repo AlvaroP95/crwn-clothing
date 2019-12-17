@@ -4,6 +4,10 @@ import {
   convertCollectionsSnapshotToMap
 } from "../../firebase/firebase.utils";
 
+export const fetchSearchedElementsStart = () => ({
+  type: ShopActionTypes.FETCH_SEARCHED_ELEMENTS_START
+});
+
 export const fetchCollectionsStart = () => ({
   type: ShopActionTypes.FETCH_COLLECTIONS_START
 });
