@@ -11,12 +11,16 @@ export const CartDropdownContainer = styled.div`
   border: 1px solid black;
   background-color: white;
   top: 90px;
-  right: 40px;
+  right: 27px;
   z-index: 5;
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1400px) {
     top: 70px;
-    right: 20px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    top: 70px;
+    right: 17px;
   }
 `;
 

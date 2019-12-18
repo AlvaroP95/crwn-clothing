@@ -25,12 +25,44 @@ const getButtonStyles = props => {
     return closeItemAdded;
   }
 
+  if (props.searchButton) {
+    return searchButton;
+  }
+
   return buttonStyles;
 };
+
+const searchButton = css`
+  min-width: 32px;
+  border: none;
+  background: white;
+  padding: 0;
+  display: flex-end;
+  margin: 0;
+  position: relative;
+  top: 6px;
+  height: 32px;
+  align-items: center;
+  margin-right: 5px;
+
+  @media screen and (max-width: 940px) {
+    margin: 0;
+    margin-right: 5px;
+    height: 32px;
+  }
+
+  @media screen and (max-width: 800px) {
+    margin: 0;
+    margin-right: 5px;
+    height: 32px;
+    margin-top: -3px;
+  }
+`;
 
 const doubleButton = css`
   padding: 0 27px 0 27px;
 `;
+
 const buttonStyles = css`
   background-color: black;
   color: white;

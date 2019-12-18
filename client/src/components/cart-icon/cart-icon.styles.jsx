@@ -6,6 +6,7 @@ export const CartContainer = styled.div`
   width: 45px;
   height: 45px;
   position: relative;
+  top: -14px;
   display: flex;
   align-items: center;
   justify-content: center;

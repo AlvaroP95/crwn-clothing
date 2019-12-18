@@ -3,9 +3,6 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { withRouter } from "react-router-dom";
 
-// import CollectionPreview from "../../components/collection-preview/collection-preview.component";
-// import { CollectionsOverviewContainer } from "../../components/collections-overview/collections-overview.styles";
-
 import CollectionItem from "../../components/collection-item/collection-item.component";
 
 import {
@@ -16,7 +13,6 @@ import {
 
 import {
   CollectionPageContainer,
-  CollectionTitle,
   CollectionItemsContainer
 } from "../collection/collection.styles";
 import { SearchedForText, SearchedItem } from "./searched-items.styles";
