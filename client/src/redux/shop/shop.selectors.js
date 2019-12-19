@@ -27,10 +27,3 @@ export const selectCollectionsForPreview = createSelector(
   collections =>
     collections ? Object.keys(collections).map(key => collections[key]) : []
 );
-
-//is the same but slower
-// createSelector([selectCollections], collections =>
-//   collections.[find(
-//     collection => collection.id === COLLECTION_ID_MAP[collectionUrlParam]
-//   )]
-// );

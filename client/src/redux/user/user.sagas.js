@@ -24,9 +24,7 @@ export function* getSnapshotFromUserAuth(userAuth, additionalData) {
       additionalData
     );
     const userSnapshot = yield userRef.get();
-    //put(), puts things bac into our regular Redux flow
     yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
-    //Put is the redux-saga way of dispatching actions
   } catch (error) {
     yield put(signInFailure(error));
   }
@@ -37,7 +35,6 @@ export function* signInWithGoogle() {
     const { user } = yield auth.signInWithPopup(googleProvider);
     yield getSnapshotFromUserAuth(user);
   } catch (error) {
-    //Catch needed because signInWithPopup can fail
     yield put(signInFailure(error));
   }
 }
@@ -47,7 +44,6 @@ export function* signInWithEmail({ payload: { email, password } }) {
     const { user } = yield auth.signInWithEmailAndPassword(email, password);
     yield getSnapshotFromUserAuth(user);
   } catch (error) {
-    //Catch needed because signInWithEmailAndPassword can fail
     yield put(signInFailure(error));
   }
 }

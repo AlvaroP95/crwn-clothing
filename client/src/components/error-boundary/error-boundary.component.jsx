@@ -12,7 +12,6 @@ export class ErrorBoundary extends Component {
   };
 
   static getDerivedStateFromError(error) {
-    //process the error
     return { hasErrored: true };
   }
 

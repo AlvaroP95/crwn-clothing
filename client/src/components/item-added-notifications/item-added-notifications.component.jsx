@@ -38,7 +38,6 @@ const ItemAddedNotificationsContainer = ({
             }}
             itemAddedGoToCheckout
           >
-            {/* {itemName} ADDED */}
             {isVisible
               ? recentlyAddedItem.name + " ADDED"
               : itemName + " ADDED"}
@@ -52,7 +51,6 @@ const ItemAddedNotificationsContainer = ({
             }}
             closeItemAdded
           >
-            {/* {recentlyAddedItem.imageUrl} */}
             &#10005;
           </CustomButton>
         </ItemAddedNotificationSubContainer>

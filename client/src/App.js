@@ -28,8 +28,6 @@ const App = ({ checkUserSession, currentUser }) => {
     checkUserSession();
   }, [checkUserSession]);
 
-  // const [recentlyAddedItemsCount, setRecentlyAddedItemsCount] = useState(0);
-
   return (
     <div>
       <GlobalStyle />
@@ -38,7 +36,6 @@ const App = ({ checkUserSession, currentUser }) => {
         <ErrorBoundary>
           <Suspense fallback={<Spinner />}>
             <Route exact path="/" component={HomePage} />
-            {/* Switch renders only one of its children */}
             <Route path="/shop" component={ShopPage} />
             <Route exact path="/checkout" component={CheckoutPage} />
             <Route
@@ -52,7 +49,6 @@ const App = ({ checkUserSession, currentUser }) => {
           </Suspense>
         </ErrorBoundary>
       </Switch>
-      {/* <>{Array(recentlyAddedItemsCount).fill(<Header />)}</> */}
       <ItemAddedNotificationsContainer />
     </div>
   );

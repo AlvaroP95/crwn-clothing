@@ -13,11 +13,6 @@ const Directory = ({ sections }) => (
     {sections.map(({ id, ...otherSectionProps }) => (
       <MenuItem key={id} {...otherSectionProps} />
     ))}
-    {/* {this.state.sections.map(({ title, imageUrl, id, size }) => (
-          <MenuItem key={id} title={title} imageUrl={imageUrl} size={size} />
-        ))} 
-        
-        Perfectly fine way, but as the keys are equals to the values (i.e: title={title} we can use a ES6 syntax*/}
   </DirectoryMenuContainer>
 );
 

@@ -46,7 +46,7 @@ export const addCollectionAndDocuments = async (
 ) => {
   const collectionRef = firestore.collection(collectionKey);
 
-  //batch transforms all calls ( like set() ) into one big group, therefore the code is consistent because if some call doesn't work then the whole app won't work but won't have bugs.
+  //batch transforms all calls ( like set() ) into one big group, therefore the code is consistent because if a call doesn't work then the whole app won't work but won't have bugs.
   const batch = firestore.batch();
   objectsToAdd.forEach(obj => {
     const newDocRef = collectionRef.doc();
@@ -57,26 +57,11 @@ export const addCollectionAndDocuments = async (
 };
 
 export const convertSearchedSnapshotToMap = collections => {
-  ///////////////
   const transformedCollection = collections.docs.map(doc => {
-    // const { title, items } = doc.data();
-    // console.log("searchedToMap", doc.data());
     console.log("searchedSnapshot");
     return doc.data();
-    // return {
-    //   routeName: encodeURI(title.toLowerCase()),
-    //   id: doc.id,
-    //   title,
-    //   items
-    // };
   });
   console.log("searchedToMap", transformedCollection);
-
-  // return transformedCollection.reduce((accumulator, collection) => {
-  //   accumulator[collection.title.toLowerCase()] = collection;
-
-  //   return accumulator;
-  // }, {});
 };
 
 export const convertCollectionsSnapshotToMap = collections => {
