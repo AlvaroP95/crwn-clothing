@@ -31,19 +31,25 @@ export const LogoContainer = styled(Link)`
     margin: 0 10px 0;
     padding: 0;
   }
+
+  @media screen and (max-width: 375px) {
+    width: 50px;
+    margin: 0 10px 0 3px;
+    padding: 0;
+  }
 `;
 
 export const SearchBarContainer = styled.div`
   display: flex;
   width: 100%;
   height: 63%;
-  margin: 0px 27px 0px 4px;
+  margin: 0px 15px 0px 4px;
   border: 1px solid darkgrey;
   align-items: center;
   justify-content: space-between;
 
-  @media screen and (max-width: 800px) {
-    margin: 0px 6px 0px 4px;
+  @media screen and (max-width: 375px) {
+    margin: 0;
   }
 `;
 
@@ -56,7 +62,6 @@ export const SearchInput = styled.input`
   height: 100%;
   border: none;
   color: darkslategrey;
-  /* border-bottom: 1px solid grey; */
   width: 100%;
 
   display: flex-start;
@@ -90,7 +95,7 @@ export const OptionsContainer = styled.div`
 
 export const OptionLink = styled(NavLink)`
   padding: 0px 15px 28px;
-  font-size: 18px;
+  font-size: 20px;
   text-align: center;
   white-space: nowrap;
   cursor: pointer;
@@ -98,19 +103,18 @@ export const OptionLink = styled(NavLink)`
   &:hover,
   &.active,
   &:active {
-    padding-bottom: 9px;
+    padding-bottom: 6px;
     padding-top: 0px;
     margin-top: -16px;
     border-bottom: darkgrey solid 1px;
   }
 
-  @media screen and (max-width: 385px) {
-    padding: 15px 6px;
-    font-size: 17px;
-  }
-
-  @media screen and (max-width: 345px) {
-    padding: 15px 6px;
-    font-size: 16px;
+  @media screen and (max-width: 800px) and (min-width: 650px) {
+    &:hover,
+    &.active,
+    &:active {
+      padding-bottom: 4px;
+      margin-top: -16px;
+    }
   }
 `;

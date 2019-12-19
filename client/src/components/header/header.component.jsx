@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
+import { ReactComponent as LogoSmall } from "../../assets/crownSmall.svg";
+import { ReactComponent as LogoVerySmall } from "../../assets/crownVerySmall.svg";
 import { ReactComponent as Logo13 } from "../../assets/13.svg";
 
 import { connect } from "react-redux";
@@ -66,7 +68,7 @@ const Header = ({
   return (
     <HeaderContainer>
       <LogoContainer to="/">
-        <Logo />
+        {useWindowSize()[0] > 800 ? <Logo /> : <LogoSmall />}
       </LogoContainer>
 
       <SearchBarContainer>

@@ -24,7 +24,6 @@ const ShopPage = ({ match, fetchCollectionsStart, isFetching, isLoaded }) => {
   useEffect(() => {
     //
     if (!isFetching && !isLoaded) {
-      console.log("no debería");
       fetchCollectionsStart();
     }
   }, [fetchCollectionsStart, isFetching, isLoaded]);

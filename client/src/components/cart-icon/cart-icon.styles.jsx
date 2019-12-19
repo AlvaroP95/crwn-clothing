@@ -11,22 +11,26 @@ export const CartContainer = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+  @media screen and (max-width: 375px) {
+    width: 38px;
+  }
 `;
 
 export const ShoppingIcon = styled(ShoppingIconSVG)`
-  width: 25px;
-  height: 25px;
+  width: 28px;
+  height: 28px;
   z-index: 5;
 
   &:hover {
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
   }
 `;
 
 export const ShoppingIconActive = styled(ShoppingIcon)`
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
 `;
 
 export const ItemCountContainer = styled.span`

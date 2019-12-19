@@ -57,6 +57,13 @@ const searchButton = css`
     height: 32px;
     margin-top: -3px;
   }
+
+  @media screen and (max-width: 800px) {
+    margin: 0;
+    margin-right: 2px;
+    height: 32px;
+    margin-top: -3px;
+  }
 `;
 
 const doubleButton = css`

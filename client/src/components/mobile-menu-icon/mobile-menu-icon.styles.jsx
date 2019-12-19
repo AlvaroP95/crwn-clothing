@@ -10,6 +10,10 @@ export const MobileMenuIconContainer = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+  @media screen and (max-width: 375px) {
+    width: 39px;
+  }
 `;
 
 export const MobileMenuIcon = styled(MobileMenuIconSVG)`
