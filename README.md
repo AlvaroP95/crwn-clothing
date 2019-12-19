@@ -2,7 +2,7 @@
 https://crwn-db-d6932.firebaseapp.com/
 
 ## App Information
-  This is a personal Web App created to enhance my habilities and expand my React knowledge, use new libraries, learn programmers skills like planning, handling frustration and commit/push features successfully in time, respecting deadlines.
+  This is a personal Web App created to enhance my abilities and expand my React knowledge, use new libraries, learn programmers skills like planning, handling frustration and commit/push features successfully in time, respecting deadlines.
 #### Technologies, dependencies and libraries
 - React
 - React-Router
