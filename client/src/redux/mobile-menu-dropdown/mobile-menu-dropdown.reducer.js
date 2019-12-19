@@ -11,6 +11,11 @@ const mobileMenuReducer = (state = INITIAL_STATE, action) => {
         ...state,
         visibility: !state.visibility
       };
+    case MobileMenuActionTypes.CLOSE_MOBILE_MENU:
+      return {
+        ...state,
+        visibility: true
+      };
     default:
       return state;
   }

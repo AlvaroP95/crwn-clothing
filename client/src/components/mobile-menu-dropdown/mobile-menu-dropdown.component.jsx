@@ -21,7 +21,7 @@ const MobileMenuDropdown = ({
   signOutStart
 }) => (
   <MobileMenuDropdownContainer>
-    <MobileMenuItemsContainer>
+    <MobileMenuItemsContainer className="mobileMenu">
       <OptionMobileLink
         to="/"
         exact

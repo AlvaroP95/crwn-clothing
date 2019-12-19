@@ -8,6 +8,8 @@ import {
   selectCartHidden
 } from "../../redux/cart/cart.selectors";
 
+import { closeMobileMenu } from "../../redux/mobile-menu-dropdown/mobile-menu-dropdown.actions";
+
 import {
   CartContainer,
   ShoppingIcon,
@@ -15,15 +17,21 @@ import {
   ItemCountContainer
 } from "./cart-icon.styles";
 
-const CartIcon = ({ toggleCartHidden, itemCount, hidden }) => (
-  <CartContainer onClick={toggleCartHidden}>
+const CartIcon = ({ toggleCartHidden, itemCount, hidden, closeMobileMenu }) => (
+  <CartContainer
+    onClick={() => {
+      toggleCartHidden();
+      closeMobileMenu();
+    }}
+  >
     {hidden ? <ShoppingIcon /> : <ShoppingIconActive />}
 
     <ItemCountContainer>{itemCount}</ItemCountContainer>
   </CartContainer>
 );
 const mapDispatchToProps = dispatch => ({
-  toggleCartHidden: () => dispatch(toggleCartHidden())
+  toggleCartHidden: () => dispatch(toggleCartHidden()),
+  closeMobileMenu: () => dispatch(closeMobileMenu())
 });
 
 const mapStateToProps = createStructuredSelector({

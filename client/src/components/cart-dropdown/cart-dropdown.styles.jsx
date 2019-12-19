@@ -40,4 +40,8 @@ export const CartItemsContainer = styled.div`
   overflow: scroll;
   overflow-x: hidden;
   margin-bottom: 20px;
+
+  &.mobileMenu {
+    overflow: hidden;
+  }
 `;

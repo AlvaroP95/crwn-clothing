@@ -51,12 +51,6 @@ const CheckoutPage = ({ cartItems, total, clearCart }) => {
           {cartItems.map(cartItem => (
             <CheckoutItem key={cartItem.id} cartItem={cartItem} />
           ))}
-          {/* 
-        {cartItems.length > 0 ? (
-          <TrashIconContainer onClick={clearCart}>
-          <TrashIconSVG />
-          </TrashIconContainer>
-        ) : null} */}
 
           <TrashIconContainer onClick={clearCart}>
             <TrashIconSVG />

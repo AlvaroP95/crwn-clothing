@@ -6,6 +6,7 @@ export const OptionMobileLink = styled(NavLink)`
   text-align: center;
   white-space: nowrap;
   cursor: pointer;
+  margin: 5px 0;
 
   &:hover,
   &.active,

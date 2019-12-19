@@ -22,3 +22,7 @@ export const removeItem = item => ({
 export const clearCart = () => ({
   type: CartActionTypes.CLEAR_CART
 });
+
+export const closeCartMenu = () => ({
+  type: CartActionTypes.CLOSE_CART_MENU
+});

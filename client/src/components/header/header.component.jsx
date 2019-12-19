@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { ReactComponent as LogoSmall } from "../../assets/crownSmall.svg";
-import { ReactComponent as LogoVerySmall } from "../../assets/crownVerySmall.svg";
 import { ReactComponent as Logo13 } from "../../assets/13.svg";
 
 import { connect } from "react-redux";
@@ -73,7 +72,6 @@ const Header = ({
 
       <SearchBarContainer>
         {redirect ? handleRedirect() : null}
-        {/* {console.log(useWindowSize())} */}
         <form
           onSubmit={handleSubmit}
           style={{
@@ -97,12 +95,6 @@ const Header = ({
         </form>
       </SearchBarContainer>
       <OptionsContainer>
-        {/* {console.log(window.matchMedia("(max-width: 600px)"))}
-        {window.matchMedia("(max-width: 600px)").matches ? (
-          <OptionLink as="div">XXX</OptionLink>
-        ) : (
-          <OptionLink to="/shop">SHOP</OptionLink>
-        )} */}
         {useWindowSize()[0] < 650 ? (
           <MobileMenuIcon />
         ) : (
@@ -110,8 +102,6 @@ const Header = ({
             <OptionLink to="/shop">SHOP</OptionLink>
             <OptionLink to="/checkout">CHECKOUT</OptionLink>
             {currentUser ? (
-              // <OptionDiv onClick={() => auth.signOut()}>SIGN OUT</OptionDiv>
-              //ARE THE SAME
               <OptionLink as="div" onClick={signOutStart}>
                 SIGN OUT
               </OptionLink>
@@ -120,7 +110,6 @@ const Header = ({
             )}
           </>
         )}
-        {/* <OptionLink to="/shop">SHOP</OptionLink> */}
         <CartIcon />
       </OptionsContainer>
       {cartHidden ? null : <CartDropdown />}

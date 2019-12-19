@@ -27,7 +27,6 @@ const SearchedItems = ({
   location
 }) => {
   useEffect(() => {
-    //
     if (!isFetching && !isLoaded) {
       fetchCollectionsStart();
     }
@@ -46,14 +45,12 @@ const SearchedItems = ({
     return accumulator;
   }, []);
 
-  console.log("foundItems", foundItems);
   return (
     <CollectionPageContainer>
-      <SearchedForText>Results for </SearchedForText>
-      <SearchedItem>
-        {/* {query} */}
-        {location.state.searchedItems}
-      </SearchedItem>
+      <SearchedForText>
+        {foundItems.length > 0 ? "Results " : "No results "}for{" "}
+      </SearchedForText>
+      <SearchedItem>{location.state.searchedItems}</SearchedItem>
       <CollectionItemsContainer>
         {foundItems.map(item => (
           <CollectionItem key={item.id} item={item} />
