@@ -8,6 +8,7 @@ import cartReducer from "./cart/cart.reducer";
 import directoryReducer from "./directory/directory.reducer";
 import shopReducer from "../redux/shop/shop.reducer";
 import recentlyAddedItemsReducer from "../redux/recently-added-items/recently-added-items.reducer";
+import mobileMenuReducer from "./mobile-menu-dropdown/mobile-menu-dropdown.reducer";
 
 const persistConfig = {
   key: "root",
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   directory: directoryReducer,
   shop: shopReducer,
-  recentlyAddedItems: recentlyAddedItemsReducer
+  recentlyAddedItems: recentlyAddedItemsReducer,
+  mobileMenu: mobileMenuReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

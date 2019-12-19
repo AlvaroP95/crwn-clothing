@@ -25,7 +25,6 @@ const SearchedItems = ({
   isFetching,
   isLoaded,
   location
-  //   searchedItems
 }) => {
   useEffect(() => {
     //
@@ -33,9 +32,7 @@ const SearchedItems = ({
       fetchCollectionsStart();
     }
   }, [fetchCollectionsStart, isFetching, isLoaded]);
-  //   console.log(searchedItems);
   let query = location.state.searchedItems;
-  //   let query = "dress";
   let searched = collections.map(({ items }) => {
     return items.filter(
       item => item.name.toLowerCase().includes(query.toLowerCase()) === true
@@ -50,7 +47,6 @@ const SearchedItems = ({
   }, []);
 
   console.log("foundItems", foundItems);
-  const { title, items } = collections;
   return (
     <CollectionPageContainer>
       <SearchedForText>Results for </SearchedForText>

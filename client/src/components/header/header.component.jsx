@@ -3,15 +3,19 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { ReactComponent as Logo13 } from "../../assets/13.svg";
 
 import { connect } from "react-redux";
-import CartIcon from "../cart-icon/cart-icon.component";
 import { Redirect } from "react-router";
+import { useWindowSize } from "../../hooks/windows-resize/windows-resize";
 
 import { createStructuredSelector } from "reselect";
+import { selectMobileMenuVisibility } from "../../redux/mobile-menu-dropdown/mobile-menu-dropdown.selectors";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 import { signOutStart } from "../../redux/user/user.actions";
 
+import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+import MobileMenuIcon from "../mobile-menu-icon/mobile-menu-icon.component";
+import MobileMenuDropdown from "../mobile-menu-dropdown/mobile-menu-dropdown.component";
 import CustomButton from "../custom-button/custom-button.component";
 
 import {
@@ -23,9 +27,13 @@ import {
   SearchInput,
   SearchInputContainer
 } from "./header.styles";
-import { FormInputLabel } from "../form-input/form-input.styles";
 
-const Header = ({ currentUser, hidden, signOutStart }) => {
+const Header = ({
+  currentUser,
+  cartHidden,
+  signOutStart,
+  mobileMenuHidden
+}) => {
   const [redirect, setRedirect] = useState(false);
   const [inputtedSearchedItems, setInputtedSearchedItems] = useState("");
 
@@ -63,6 +71,7 @@ const Header = ({ currentUser, hidden, signOutStart }) => {
 
       <SearchBarContainer>
         {redirect ? handleRedirect() : null}
+        {/* {console.log(useWindowSize())} */}
         <form
           onSubmit={handleSubmit}
           style={{
@@ -85,36 +94,44 @@ const Header = ({ currentUser, hidden, signOutStart }) => {
           </CustomButton>
         </form>
       </SearchBarContainer>
-
       <OptionsContainer>
-        <OptionLink as="div">XXX</OptionLink>
-        <OptionLink to="/shop">SHOP</OptionLink>
-        <OptionLink to="/checkout">CHECKOUT</OptionLink>
-        {currentUser ? (
-          // <OptionDiv onClick={() => auth.signOut()}>SIGN OUT</OptionDiv>
-          //ARE THE SAME
-          <OptionLink as="div" onClick={signOutStart}>
-            SIGN OUT
-          </OptionLink>
+        {/* {console.log(window.matchMedia("(max-width: 600px)"))}
+        {window.matchMedia("(max-width: 600px)").matches ? (
+          <OptionLink as="div">XXX</OptionLink>
         ) : (
-          <OptionLink to="/signin">SIGN-IN</OptionLink>
+          <OptionLink to="/shop">SHOP</OptionLink>
+        )} */}
+        {useWindowSize()[0] < 650 ? (
+          <MobileMenuIcon />
+        ) : (
+          <>
+            <OptionLink to="/shop">SHOP</OptionLink>
+            <OptionLink to="/checkout">CHECKOUT</OptionLink>
+            {currentUser ? (
+              // <OptionDiv onClick={() => auth.signOut()}>SIGN OUT</OptionDiv>
+              //ARE THE SAME
+              <OptionLink as="div" onClick={signOutStart}>
+                SIGN OUT
+              </OptionLink>
+            ) : (
+              <OptionLink to="/signin">SIGN-IN</OptionLink>
+            )}
+          </>
         )}
+        {/* <OptionLink to="/shop">SHOP</OptionLink> */}
         <CartIcon />
       </OptionsContainer>
-      {hidden ? null : <CartDropdown />}
+      {cartHidden ? null : <CartDropdown />}
+      {mobileMenuHidden ? null : <MobileMenuDropdown />}
     </HeaderContainer>
   );
 };
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
-  hidden: selectCartHidden
+  cartHidden: selectCartHidden,
+  mobileMenuHidden: selectMobileMenuVisibility
 });
-//ARE THE SAME
-// const mapStateToProps = state => ({
-//   currentUser: selectCurrentUser(state),
-//   hidden: selectCartHidden(state)
-// });
 
 const mapDispatchToProps = dispatch => ({
   signOutStart: () => dispatch(signOutStart())
