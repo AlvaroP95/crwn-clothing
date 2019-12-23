@@ -8,8 +8,6 @@ This is a personal Web App created to enhance my abilities and expand my React k
 
 #### Technologies, dependencies and libraries
 
-=======
-
 - React
 - React-Router
 - Formik
